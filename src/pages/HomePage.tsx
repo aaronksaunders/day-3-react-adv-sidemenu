@@ -1,4 +1,5 @@
 import {
+  IonButton,
   IonButtons,
   IonContent,
   IonHeader,
@@ -7,11 +8,11 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { useParams } from "react-router";
+import { useHistory } from "react-router";
 import "./Page.css";
 
-const Page: React.FC = () => {
-  const { name } = useParams<{ name: string }>();
+const HomePage: React.FC = () => {
+  const history = useHistory();
 
   return (
     <IonPage>
@@ -20,19 +21,19 @@ const Page: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>{name}</IonTitle>
+          <IonTitle>HOME PAGE</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">{name}</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+        <IonButton routerLink={"/detail"}>DETAIL PAGE</IonButton>
+
+        <IonButton onClick={() => history.push("/detail")}>
+          DETAIL PAGE
+        </IonButton>
       </IonContent>
     </IonPage>
   );
 };
 
-export default Page;
+export default HomePage;
